@@ -1,0 +1,27 @@
+{
+  "name": "namastereact",
+  "version": "1.0.0",
+  "description": "Learn react with me",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amitbhatt007/NamasteReact.git"
+  },
+  "author": "amit bhatt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amitbhatt007/NamasteReact/issues"
+  },
+  "homepage": "https://github.com/amitbhatt007/NamasteReact#readme",
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}
