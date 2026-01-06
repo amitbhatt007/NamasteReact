@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.main-container{
+  margin-top:20px;
+
+  .restaurent-list{
+    display:flex;
+    gap: $gap;
+    flex-wrap:wrap;
+    margin-top:20px;
+  }
+}

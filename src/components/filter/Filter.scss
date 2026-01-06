@@ -1,0 +1,22 @@
+@import "../../styles/variables";
+
+.filter{
+  margin-top:20px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+
+  .filter-select{
+    padding:6px 8px;
+    border-radius:6px;
+    border:1px solid lighten($muted, 30%);
+  }
+
+  .filter-clear{
+    padding:6px 10px;
+    background:transparent;
+    border:1px solid lighten($muted, 40%);
+    border-radius:6px;
+    cursor:pointer;
+  }
+}

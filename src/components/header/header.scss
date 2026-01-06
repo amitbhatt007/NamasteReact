@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.header{
+  display:flex;
+  justify-content:space-between;
+
+  .logo{
+    height:50px;
+    width:50px;
+  }
+
+  .nav-items{
+    > ul{
+      list-style-type:none;
+      display:flex;
+      gap: $gap;
+      align-items:center;
+      font-size:20px;
+    }
+  }
+}
