@@ -2,18 +2,32 @@ import React, { useState, useEffect } from "react";
 import "./Filter.scss";
 
 const Filter = ({ cuisines = [], onChange }) => {
+  const [search, setSearch] = useState("");
   const [cuisine, setCuisine] = useState("");
   const [minRating, setMinRating] = useState(0);
   const [maxDelivery, setMaxDelivery] = useState(0);
 
   useEffect(() => {
     if (onChange) {
-      onChange({ cuisine, minRating: Number(minRating), maxDelivery: Number(maxDelivery) });
+      onChange({
+        search,
+        cuisine,
+        minRating: Number(minRating),
+        maxDelivery: Number(maxDelivery),
+      });
     }
-  }, [cuisine, minRating, maxDelivery]);
+  }, [search, cuisine, minRating, maxDelivery]);
 
   return (
     <div className="filter">
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search restaurants..."
+          className="search-input"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       <select
         className="filter-select"
         value={cuisine}
@@ -52,6 +66,7 @@ const Filter = ({ cuisines = [], onChange }) => {
       <button
         className="filter-clear"
         onClick={() => {
+          setSearch("");
           setCuisine("");
           setMinRating(0);
           setMaxDelivery(0);
