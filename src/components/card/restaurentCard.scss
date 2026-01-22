@@ -1,0 +1,39 @@
+@import "../../styles/variables";
+
+.restaurent-card{
+  flex: 1 1 250px;
+  min-width: 200px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.12);
+  border-radius: 10px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  will-change: transform;
+  cursor: pointer;
+
+  &:hover{
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 8px 10px 20px rgba(0,0,0,0.18);
+  }
+
+  .restaurent-logo{
+    height: 150px;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .card-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:8px;
+    font-weight:500;
+  }
+
+  .meta-address{
+    margin-top:6px;
+    color: $muted;
+    font-size:14px;
+  }
+}

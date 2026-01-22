@@ -1,0 +1,10 @@
+@import "./src/styles/variables";
+
+/* Global styles */
+#heading { color: $primary-color; }
+
+body {
+  padding: 10px 40px;
+}
+
+/* Keep only truly global utilities here; component styles live next to components */
