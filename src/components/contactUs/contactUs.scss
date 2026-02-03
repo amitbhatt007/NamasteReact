@@ -1,0 +1,144 @@
+@import "../../styles/variables";
+
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+
+  h1 {
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 30px;
+  }
+
+  .contact-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+
+      form {
+        .form-group {
+          margin-bottom: 20px;
+          text-align: left;
+
+          label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+          }
+
+          input,
+          textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid lighten($muted, 30%);
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+
+            &:focus {
+              outline: none;
+              border-color: $primary-color;
+              box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+            }
+
+            &.error {
+              border-color: #e74c3c;
+            }
+          }
+
+          textarea {
+            resize: vertical;
+          }
+
+          .error-msg {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+          }
+        }
+
+        .submit-btn {
+          background: $primary-color;
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background 0.3s;
+
+          &:hover:not(:disabled) {
+            background: darken($primary-color, 10%);
+          }
+
+          &:disabled {
+            background: lighten($muted, 20%);
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 250px;
+      text-align: left;
+
+      h3 {
+        color: $primary-color;
+        margin-bottom: 15px;
+      }
+
+      p {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .faq {
+        margin-top: 30px;
+
+        h4 {
+          color: $primary-color;
+          margin-bottom: 15px;
+        }
+
+        .faq-item {
+          margin-bottom: 10px;
+
+          .faq-question {
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            border: 1px solid lighten($muted, 30%);
+            padding: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+
+            &:hover {
+              background: lighten($primary-color, 45%);
+            }
+          }
+
+          .faq-answer {
+            padding: 10px;
+            background: lighten($muted, 45%);
+            margin: 5px 0;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+}
