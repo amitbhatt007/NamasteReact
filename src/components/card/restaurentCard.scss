@@ -1,39 +1,119 @@
 @import "../../styles/variables";
 
 .restaurent-card{
-  flex: 1 1 250px;
-  min-width: 200px;
-  padding: 10px;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.12);
-  border-radius: 10px;
-  transition: transform 180ms ease, box-shadow 180ms ease;
-  will-change: transform;
+  flex: 0 0 260px;
+  width: 260px;
+  height: auto; /* let height follow content to avoid extra empty space */
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+  transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms ease;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 
   &:hover{
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 8px 10px 20px rgba(0,0,0,0.18);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 18px 40px rgba(16, 24, 40, 0.12);
   }
 
-  .restaurent-logo{
+  .card-image{
+    position: relative;
     height: 150px;
-    width: 100%;
-    display: block;
-    object-fit: cover;
-    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02));
+
+    .restaurent-logo{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-placeholder{
+      height: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: $muted;
+      background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
+      font-weight:600;
+    }
+
+    .image-overlay{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display:flex;
+      justify-content: space-between;
+      pointer-events: none;
+
+      .badge{
+        pointer-events: auto;
+        display:inline-flex;
+        align-items:center;
+        gap:6px;
+        padding:6px 10px;
+        border-radius: 12px;
+        font-weight:600;
+        font-size:0.9em;
+        backdrop-filter: blur(6px);
+      }
+
+      .rating{
+        background: rgba(255,255,255,0.92);
+        color: $primary-color;
+        box-shadow: 0 4px 12px rgba(42,157,143,0.08);
+      }
+
+      .time{
+        background: rgba(0,0,0,0.6);
+        color: white;
+        padding:6px 12px;
+      }
+    }
   }
 
-  .card-meta{
+  .card-body{
+    padding: 10px 12px 12px;
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:8px;
-    font-weight:500;
-  }
+    flex-direction: column;
+    gap:6px;
+    flex: none; /* size to content so no leftover space remains */
+    min-height: 0;
 
-  .meta-address{
-    margin-top:6px;
-    color: $muted;
-    font-size:14px;
+    .card-title{
+      margin:0;
+      font-size:1.05rem;
+      color: #102336;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .cuisine{
+      margin:0;
+      color: $muted;
+      font-size:0.9rem;
+      display:block;
+      max-width:100%;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .card-footer{
+      margin-top:6px;
+
+      .meta-address{
+        color: $muted;
+        font-size:0.85rem;
+        line-height:1.2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
   }
 }

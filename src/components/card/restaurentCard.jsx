@@ -1,5 +1,6 @@
 import { swiggyImageUrl } from "../../utils/constant";
 import "./restaurentCard.scss";
+
 const RestaurentCard = ({
   restName,
   cuisine,
@@ -9,22 +10,33 @@ const RestaurentCard = ({
   address,
 }) => {
   return (
-    <div className="restaurent-card">
-      {imgSrc && (
-        <img
-          src={swiggyImageUrl + imgSrc}
-          alt="restaurent-logo"
-          className="restaurent-logo"
-        />
-      )}
-      <h3>{restName}</h3>
-      <p>{cuisine}</p>
-      <div className="card-meta">
-        <span className="meta-rating">⭐ {rating ?? "—"}</span>
-        <span className="meta-time">{deliveryTime ?? ""}</span>
+    <article className="restaurent-card" aria-label={restName}>
+      <div className="card-image">
+        {imgSrc ? (
+          <img
+            src={swiggyImageUrl + imgSrc}
+            alt={restName}
+            className="restaurent-logo"
+          />
+        ) : (
+          <div className="image-placeholder">No image</div>
+        )}
+
+        <div className="image-overlay">
+          <span className="badge rating">⭐ {rating ?? "—"}</span>
+          <span className="badge time">{deliveryTime ?? ""}</span>
+        </div>
       </div>
-      {address && <p className="meta-address">{address}</p>}
-    </div>
+
+      <div className="card-body">
+        <h3 className="card-title">{restName}</h3>
+        <p className="cuisine">{cuisine}</p>
+
+        <div className="card-footer">
+          {address && <div className="meta-address">{address}</div>}
+        </div>
+      </div>
+    </article>
   );
 };
 

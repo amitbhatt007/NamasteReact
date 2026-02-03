@@ -1,0 +1,121 @@
+@import "../../styles/variables";
+
+.footer {
+  background: darken($muted, 10%);
+  color: white;
+  padding: 40px 20px 20px;
+  margin-top: 50px;
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    .footer-section {
+      flex: 1 1 200px;
+
+      h3 {
+        color: $primary-color;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+      }
+
+      h4 {
+        color: $primary-color;
+        margin-bottom: 15px;
+      }
+
+      p {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 8px;
+
+          a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+
+            &:hover {
+              color: $primary-color;
+            }
+          }
+        }
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+
+        .social-link {
+          color: white;
+          text-decoration: none;
+          padding: 5px 10px;
+          border: 1px solid white;
+          border-radius: 4px;
+          transition: all 0.3s;
+
+          &:hover {
+            background: $primary-color;
+            border-color: $primary-color;
+          }
+        }
+      }
+
+      .newsletter-form {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+
+        input {
+          flex: 1;
+          padding: 8px;
+          border: none;
+          border-radius: 4px;
+          font-size: 14px;
+        }
+
+        button {
+          background: $primary-color;
+          color: white;
+          border: none;
+          padding: 8px 12px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background 0.3s;
+
+          &:hover {
+            background: darken($primary-color, 10%);
+          }
+        }
+      }
+
+      .success-msg {
+        color: lighten($primary-color, 20%);
+        margin-top: 10px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid lighten($muted, 20%);
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+}

@@ -2,3 +2,5 @@
 /package-lock.json
 /.parcel-cache
 /dist
+/proxy-server/node_modules
+/proxy-server/package-lock.json

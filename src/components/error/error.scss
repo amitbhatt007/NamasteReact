@@ -1,0 +1,54 @@
+@import "../../styles/variables";
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, lighten($primary-color, 20%), lighten($muted, 30%));
+  padding: 20px;
+
+  .error-content {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+
+    .error-emoji {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: $primary-color;
+      margin-bottom: 15px;
+      font-size: 2rem;
+    }
+
+    p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+      color: $muted;
+    }
+
+    .retry-btn {
+      background: $primary-color;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 20px;
+
+      &:hover {
+        background: darken($primary-color, 10%);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($primary-color, 0.3);
+      }
+    }
+  }
+}
