@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* Global styles */
+#heading { color: #2a9d8f; }
+
+body {
+  margin: 0;
+  background: #f5f5f5;
+  font-family: 'Arial', sans-serif;
+}
+
+.outlet-container {
+  min-height: 80vh;
+  background: #ffffff;
+  padding:  0px 20px;
+}

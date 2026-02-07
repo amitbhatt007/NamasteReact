@@ -40,4 +40,14 @@ const RestaurentCard = ({
   );
 };
 
+const withPromotedLabel = (Component) => {
+  return ({ label, ...props }) => (
+    <div className="promoted-card">
+      <div className="promoted-label">{label}</div>
+      <Component {...props} />
+    </div>
+  );
+};
+
 export default RestaurentCard;
+export const RestaurentCardWithLabel = withPromotedLabel(RestaurentCard);
