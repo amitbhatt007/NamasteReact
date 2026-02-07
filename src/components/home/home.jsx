@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./home.scss";
-import RestaurentCard from "../card/restaurentCard.jsx";
+import RestaurentCard, {
+  RestaurentCardWithLabel,
+} from "../card/restaurentCard.jsx";
 import Filter from "../filter/Filter.jsx";
 import Loader from "../loader/loader.jsx";
 import Shimmer from "../shimmer/shimmer.jsx";
@@ -66,16 +68,30 @@ const Home = () => {
       <div className="restaurent-list">
         {filtered?.map((restaurant) => (
           <Link key={restaurant.info.id} to={`/menu/${restaurant.info.id}`}>
-            <RestaurentCard
-              restName={restaurant.info.name}
-              cuisine={restaurant.info.cuisines.join(", ")}
-              rating={
-                restaurant.info.avgRatingString || restaurant.info.avgRating
-              }
-              imgSrc={restaurant.info.cloudinaryImageId}
-              deliveryTime={restaurant.info?.sla?.slaString}
-              address={restaurant.info?.areaName || restaurant.info?.locality}
-            />
+            {restaurant.info.promoted ? (
+              <RestaurentCardWithLabel
+                label="Promoted"
+                restName={restaurant.info.name}
+                cuisine={restaurant.info.cuisines.join(", ")}
+                rating={
+                  restaurant.info.avgRatingString || restaurant.info.avgRating
+                }
+                imgSrc={restaurant.info.cloudinaryImageId}
+                deliveryTime={restaurant.info?.sla?.slaString}
+                address={restaurant.info?.areaName || restaurant.info?.locality}
+              />
+            ) : (
+              <RestaurentCard
+                restName={restaurant.info.name}
+                cuisine={restaurant.info.cuisines.join(", ")}
+                rating={
+                  restaurant.info.avgRatingString || restaurant.info.avgRating
+                }
+                imgSrc={restaurant.info.cloudinaryImageId}
+                deliveryTime={restaurant.info?.sla?.slaString}
+                address={restaurant.info?.areaName || restaurant.info?.locality}
+              />
+            )}
           </Link>
         ))}
       </div>

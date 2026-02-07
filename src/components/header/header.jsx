@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { logoUrl } from "../../utils/constant";
+import GlobalContext from "../../utils/globalContext";
 import "./header.scss";
 const Header = () => {
   const [lognBtnName, setLoginBtnName] = React.useState("Login");
+  const { user } = useContext(GlobalContext);
   return (
     <div className="header">
       <div className="logo-container">
-        <img src={logoUrl} alt="logo" className="logo" />
+        <Link to="/">
+          <img src={logoUrl} alt="logo" className="logo" />
+        </Link>
       </div>
       <div className="nav-items">
         <ul>
@@ -33,6 +37,7 @@ const Header = () => {
               }}
             >
               {lognBtnName}
+              {user ? ` ${user.name}` : ""}
             </button>
           </li>
         </ul>

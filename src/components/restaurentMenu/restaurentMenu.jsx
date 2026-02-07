@@ -9,6 +9,7 @@ const RestaurentMenu = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [quantities, setQuantities] = useState({});
   const [cartNotification, setCartNotification] = useState({});
+  const [expandedCategories, setExpandedCategories] = useState({});
 
   const { resId } = useParams();
   useEffect(() => {
@@ -130,6 +131,13 @@ const RestaurentMenu = () => {
     }));
   };
 
+  const toggleCategory = (category) => {
+    setExpandedCategories((prev) => ({
+      ...prev,
+      [category]: !prev[category],
+    }));
+  };
+
   if (loading) {
     return <div className="loading">Loading menu...</div>;
   }
@@ -176,57 +184,95 @@ const RestaurentMenu = () => {
           <p>No dishes found. Try a different search!</p>
         </div>
       ) : (
-        <div className="menu-items">
-          {filteredItems.map((item, index) => (
-            <div key={`${item.id}-${index}`} className="menu-item">
-              <div className="item-image-wrapper">
-                <img src={item.image} alt={item.name} />
-                <div className="item-badge">New</div>
-              </div>
-              <div className="item-details">
-                <h3>{item.name}</h3>
-                <p className="item-description">{item.description}</p>
-                <div className="item-footer">
-                  <span className="price">₹{item.price.toFixed(2)}</span>
-                  <span className="rating">⭐ 4.5</span>
-                </div>
+        <div className="menu-accordion">
+          {categories.map((category) => (
+            <div key={category} className="accordion-item">
+              <button
+                className="accordion-header"
+                onClick={() => toggleCategory(category)}
+              >
+                <span className="category-name">
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </span>
+                <span className="accordion-icon">
+                  {expandedCategories[category] ? "▼" : "▶"}
+                </span>
+              </button>
 
-                <div className="quantity-control">
-                  <button
-                    className="qty-btn"
-                    onClick={() =>
-                      handleQuantityChange(
-                        item.id,
-                        (quantities[item.id] || 0) - 1
-                      )
-                    }
-                  >
-                    −
-                  </button>
-                  <span className="qty-display">
-                    {quantities[item.id] || 0}
-                  </span>
-                  <button
-                    className="qty-btn"
-                    onClick={() =>
-                      handleQuantityChange(
-                        item.id,
-                        (quantities[item.id] || 0) + 1
-                      )
-                    }
-                  >
-                    +
-                  </button>
-                </div>
+              {expandedCategories[category] && (
+                <div className="accordion-content">
+                  <div className="menu-items">
+                    {(menuData[category] || []).map((item, index) => (
+                      <div key={`${item.id}-${index}`} className="menu-item">
+                        <div className="item-image-wrapper">
+                          <img src={item.image} alt={item.name} />
+                          <div className="item-badge">New</div>
+                        </div>
+                        <div className="item-details">
+                          <h3>{item?.name || "Unknown"}</h3>
+                          <div className="desc-wrapper">
+                            <p className="item-description">
+                              {item?.description || "No description"}
+                            </p>
+                            <div className="desc-tooltip">
+                              {item?.description || "No description"}
+                            </div>
+                          </div>
+                          <div className="item-footer">
+                            <span className="price">
+                              ₹{(item?.price || 0).toFixed(2)}
+                            </span>
+                            <span className="rating">⭐ 4.5</span>
+                          </div>
 
-                <button
-                  className="add-btn"
-                  onClick={() => handleAddToCart(item)}
-                  disabled={!quantities[item.id] || quantities[item.id] === 0}
-                >
-                  {cartNotification[item.id] ? "✓ Added!" : "Add to Cart"}
-                </button>
-              </div>
+                          <div className="action-row">
+                            <div className="quantity-control">
+                              <button
+                                className="qty-btn"
+                                onClick={() =>
+                                  handleQuantityChange(
+                                    item.id,
+                                    (quantities[item.id] || 0) - 1
+                                  )
+                                }
+                              >
+                                −
+                              </button>
+                              <span className="qty-display">
+                                {quantities[item.id] || 0}
+                              </span>
+                              <button
+                                className="qty-btn"
+                                onClick={() =>
+                                  handleQuantityChange(
+                                    item.id,
+                                    (quantities[item.id] || 0) + 1
+                                  )
+                                }
+                              >
+                                +
+                              </button>
+                            </div>
+
+                            <button
+                              className="add-btn"
+                              onClick={() => handleAddToCart(item)}
+                              disabled={
+                                !quantities[item.id] ||
+                                quantities[item.id] === 0
+                              }
+                            >
+                              {cartNotification[item.id]
+                                ? "✓ Added!"
+                                : "Add to Cart"}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
